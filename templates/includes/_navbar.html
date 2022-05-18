@@ -1,0 +1,66 @@
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Roboto');
+  h2{
+  margin:0px;
+  text-transform: uppercase;
+  }
+  h6{
+  margin:0px;
+  color:#777;
+  }
+  .wrapper{
+  text-align:center;
+  }
+  .tabs{
+  font-size:15px;
+  padding:0px;
+  list-style:none;
+  background:#fff;
+  display:inline-block;
+  border-radius:50px;
+  position:relative;
+  }
+  .tabs a{
+  text-decoration:none;
+  color: #777;
+  text-transform:uppercase;
+  padding:10px 20px;
+  display:inline-block;
+  position:relative;
+  z-index:1;
+  transition-duration:0.6s;
+  }
+  .tabs a.active{
+  color:#fff;
+  }
+  .tabs a i{
+  margin-right:5px;
+  }
+  .tabs .selector{
+  height:2%;
+  display:inline-block;
+  position:absolute;
+  margin-top: 175px;
+  left:0px;
+  top:0px;
+  z-index:1;
+  border-radius:50px;
+  transition-duration:0.6s;
+  transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  background: #e03958;
+  background: -moz-linear-gradient(45deg, #e08505 0%, #e22929 100%);
+  background: -webkit-linear-gradient(45deg, #e08505 0%,#e22929 100%);
+  background: linear-gradient(45deg, #e08505 0%,#e22929 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e08505', endColorstr='#e22929',GradientType=1 );
+  }
+</style>
+<nav class="tabs">
+  <div class="selector"></div>
+  <a href="/" class="active">
+     <i class="fab fa-superpowers"></i>
+     <div class="site-logo" style="margin: 20px;">
+  <a class="navbar-brand" href="/"><img style="width:80px;height:80px;" class="logo-icon me-2" src="{{ url_for('static', filename='images/peace.png') }}" alt="logo" ><span class="logo-text">#Peace Sign</span></a></div>
+  </a>						        
+  <a href="{{ url_for('speech') }}">Audio</a>
+  <a href="{{ url_for('video') }}"><i class="fas fa-bolt"></i>Video</a>
+</nav>

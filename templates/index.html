@@ -1,0 +1,160 @@
+{% extends "layout.html" %}
+{% block body %}
+<section class="hero-section">
+   <div class="container">
+      <div class="row">
+         <div class="col-12 col-md-7 pt-5 mb-5 align-self-center">
+            <div class="promo pe-md-3 pe-lg-5">
+               <h1 class="headline mb-3">
+                  Collapsing the communication barriers between individuals
+               </h1>
+               <div class="subheadline mb-4">
+                  with a little more understanding, is the first step to world peace
+               </div>
+               <div class="cta-holder row gx-md-3 gy-3 gy-md-0">
+                  <div class="col-12 col-md-auto">
+                     <a class="btn btn-primary w-100" href="{{ url_for('speech') }}">Translator</a>
+                  </div>
+                  <div class="col-12 col-md-auto">
+                     <a class="btn btn-secondary scrollto w-100" href="#benefits-section">Learn More</a>
+                  </div>
+               </div>
+               <div class="hero-quotes mt-5">
+                  <div id="quotes-carousel" class="quotes-carousel carousel slide carousel-fade mb-5" data-bs-ride="carousel" data-bs-interval="8000">
+                     </ol>
+                     <div class="carousel-inner">
+                        <div class="carousel-item active">
+                           <blockquote class="quote p-4 theme-bg-light">
+                              “Peace cannot be kept by force; it can only be achieved by understanding.” <br>
+                              — Albert Einstein
+                           </blockquote>
+                           <div class="source row gx-md-3 gy-3 gy-md-0 align-items-center">
+                              <div class="col-12 col-md-auto text-center text-md-start">
+                              </div>
+                              <div class="col source-info text-center text-md-start">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="carousel-item">
+                           <blockquote class="quote p-4 theme-bg-light">
+                              "Highly recommended consectetur adipiscing elit. Proin et auctor dolor, sed venenatis massa. Vestibulum ullamcorper lobortis nisi non placerat praesent mauris neque"
+                           </blockquote>
+                           <div class="source row gx-md-3 gy-3 gy-md-0 align-items-center">
+                           </div>
+                        </div>
+                        <div class="carousel-item">
+                           <blockquote class="quote p-4 theme-bg-light">
+                              "Awesome! Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam euismod nunc porta urna facilisis tempor. Praesent mauris neque, viverra quis erat vitae."
+                           </blockquote>
+                           <div class="source row gx-md-3 gy-3 gy-md-0 align-items-center">
+                              <div class="col-12 col-md-auto text-center text-md-start">
+                                 <img class="source-profile" src="assets/images/profiles/profile-3.png" alt="image" >
+                              </div>
+                              <div class="col source-info text-center text-md-start">
+                                 <div class="source-name">Andy Doe</div>
+                                 <div class="soure-title">Frontend Developer, Company Lorem</div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="col-12 col-md-5 mb-5 align-self-center">
+            <div class="book-cover-holder">
+               <img class="img-fluid book-cover" src="{{ url_for('static', filename='images/prototype.jpg') }}" alt="book cover" >
+               <div class="book-badge d-inline-block shadow">
+                  Coming<br>Soon
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<section id="benefits-section" class="benefits-section theme-bg-light-gradient py-5">
+   <div class="container py-5">
+      <h2 class="section-heading text-center mb-3">Application features</h2>
+      <div class="section-intro single-col-max mx-auto text-center mb-5">While our #Peace Sign mobile application is still in development, you can look forward to the available functions that will be implemented in the near future!</div>
+      <div class="row text-center">
+         <div class="item col-12 col-md-6 col-lg-4">
+            <div class="item-inner p-3 p-lg-4">
+               <div class="item-header mb-3">
+                  <div class="item-icon"><i class="fas fa-laptop-code"></i></div>
+                  <h3 class="item-heading">Speech-to-Sign</h3>
+               </div>
+               <div class="item-desc">
+                  To facilitate the communication with the hearing impaired, our application detects speech and translate them in american sign language
+               </div>
+            </div>
+         </div>
+         <div class="item col-12 col-md-6 col-lg-4">
+            <div class="item-inner p-3 p-lg-4">
+               <div class="item-header mb-3">
+                  <div class="item-icon"><i class="fab fa-js-square"></i></div>
+                  <h3 class="item-heading">Sign-to-speech</h3>
+               </div>
+               <div class="item-desc">
+                  Our built-in app recorder captures every alphabetic hand movement and converts them back into text or speech depending on your preference
+               </div>
+            </div>
+         </div>
+         <div class="item col-12 col-md-6 col-lg-4">
+            <div class="item-inner p-3 p-lg-4">
+               <div class="item-header mb-3">
+                  <div class="item-icon"><i class="fab fa-rocketchat"></i></div>
+                  <h3 class="item-heading">Discover & learn</h3>
+               </div>
+               <div class="item-desc">
+                  To aid you in your sign language learning journey, we have designed a function which generates random hand signs to test your understanding
+               </div>
+            </div>
+         </div>
+         <div class="item col-12 col-md-6 col-lg-4">
+            <div class="item-inner p-3 p-lg-4">
+               <div class="item-header mb-3">
+                  <div class="item-icon"><i class="fab fa-angular"></i></div>
+                  <h3 class="item-heading">Master aliquet augue ac ipsum lobortis interdum</h3>
+               </div>
+               <div class="item-desc">
+                  List one of your book's benefits here. Orci varius natoque penatibus et magnis dis parturient montes.
+               </div>
+            </div>
+         </div>
+         <div class="item col-12 col-md-6 col-lg-4">
+            <div class="item-inner p-3 p-lg-4">
+               <div class="item-header mb-3">
+                  <div class="item-icon"><i class="fas fa-code-branch"></i></div>
+                  <h3 class="item-heading">Deploy elementum mauris tincidunt tempus sagittis</h3>
+               </div>
+               <div class="item-desc">
+                  List one of your book's benefits here. Orci varius natoque penatibus et magnis dis parturient montes.
+               </div>
+            </div>
+         </div>
+         <div class="item col-12 col-md-6 col-lg-4">
+            <div class="item-inner p-3 p-lg-4">
+               <div class="item-header mb-3">
+                  <div class="item-icon"><i class="fas fa-hand-holding-usd"></i></div>
+                  <h3 class="item-heading">Become mattis est et mauris tempus non imperdiet</h3>
+               </div>
+               <div class="item-desc">
+                  List one of your book's benefits here. Orci varius natoque penatibus et magnis dis parturient montes.
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<footer class="footer">
+   <div class="footer-bottom text-center py-5">
+      <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
+      <small class="copyright">Designed with <i class="fas fa-heart" style="color: #fb866a;"></i> by <a class="theme-link" href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</small>
+   </div>
+</footer>
+<!-- Javascript -->
+<script src="assets/plugins/popper.min.js"></script>
+<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/plugins/smoothscroll.min.js"></script>
+<script src="assets/js/main.js"></script>
+{% endblock %}

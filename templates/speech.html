@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block body %}
+<h1 style="padding:10px"></h1>
+<section id="author-section" class="author-section section theme-bg-primary py-5">
+   <div class="container py-3">
+      <div class="author-profile text-center mb-5">
+      </div>
+      <img id="lady" src="{{ url_for('static', filename='images/lady.png') }}" alt="" >
+      <input style="color: black;" name="translated_speech" class="instructions" placeholder="Recognized text from speech goes here after submitting!" readonly/>
+      <p></p>
+      <h2 class="section-heading text-center text-white mb-3"></h2>
+      <div class="author-bio single-col-max mx-auto">
+         <div class="author-links text-center pt-4">
+            <div class="container">
+               <div id="formats"></div>
+               <div id="controls">
+                  <button id="recordButton">Record</button>
+                  <button id="pauseButton" disabled>Pause</button>
+                  <button id="stopButton" disabled>Stop</button>
+                  <button id="submitButton" disabled onclick="window.location.href='{{url_for('speech_transcript')}}';">Submit</button>
+                  <p id="recordingsList" style="list-style-type: none; float: right;"></p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<footer class="footer">
+   <div class="footer-bottom text-center py-5">
+      <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
+      <small class="copyright">Designed with <i class="fas fa-heart" style="color: #fb866a;"></i> by <a class="theme-link" href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</small>
+   </div>
+</footer>
+<script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+<script src="{{ url_for('static', filename='js/recorder.js') }}"></script>
+{% endblock %}
