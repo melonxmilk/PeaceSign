@@ -4,12 +4,12 @@ import numpy as np
 import PIL
 from PIL import Image
 
-audioFile = "audio.wav"
+audioFile = "audio_speech.wav"
 
 SUBSCRIPTION_KEY = keys.subscription_key
 SERVICE_REGION = keys.region
 
-letters = keys.tags
+letters = keys.image_ref
 keys.add_dict()
 
 class SkipRiffHeaderAudioStream(speechsdk.audio.PullAudioInputStreamCallback):
@@ -48,60 +48,27 @@ def recognize_with_bad_header():
 
 def retrieve_image():
 
-    tag_folders = ['image']
-    for folder in tag_folders:
-        if not os.path.exists(folder):
-            os.makedirs(folder)
-
-    headers = {
-    'Training-Key': 'replace_with_your_own_key'
-    }
-
     upper_list = []
     list_im = []
 
-    for i in recognize_with_bad_header():
-        upper_list.append(i.upper())
-    
+    list_im.clear()
+
+    data = recognize_with_bad_header()
+    transcript = list(''.join(data))
+
+    upper_list = [x.upper() for x in transcript]
+
     tag_ids = []
     for each_alphabet in upper_list:
         tag = letters.get(each_alphabet)
         tag_ids.append(tag)
-    
-    
-    for each_tag in tag_ids:
-        params = urllib.parse.urlencode({
-            'take': '1',
-            'Endpoint': keys.endpoint,
-            'projectId': keys.project_id,
-            'iterationId': keys.iterationId,
-            'tagIds': each_tag
-            })
 
 
-        try:
-                conn = http.client.HTTPSConnection(
-            'cwb-cognitiveservices.cognitiveservices.azure.com')
-                conn.request(
-            "GET", "/customvision/v3.3/training/projects/85ae3371-e249-486b-801f-c5aa9fba4553/images/tagged?%s" % params, "{body}", headers)
-                response = conn.getresponse()
-                data = response.read()
-                data_json = json.loads(data)
+    for each_tag in tag_ids: 
+        output_file = os.path.join("image",  str(each_tag) + '.jpg')
 
+        list_im.append(output_file)
 
-                for item in data_json:
-                    originalImageUri = item['originalImageUri']
-                    tag_name = item["tags"][0]["tagName"]
-                    output_file = os.path.join("image",  tag_name + '.jpg')
-                    urllib.request.urlretrieve(originalImageUri, output_file)
-                    
-                conn.close()
-
-                list_im.append(output_file)
-                
-        except Exception as e:
-            print("Error")
-            
 
     try:
     

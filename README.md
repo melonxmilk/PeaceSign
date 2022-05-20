@@ -39,6 +39,8 @@ py -m venv .venv
 # install dependencies
 $ pip install -r requirements.txt
 
+# add the subcription key e.g. 'Training-Key': 'replace_with_your_own_key'
+
 # run the application
 $ flask run
 ```
