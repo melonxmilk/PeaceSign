@@ -12,8 +12,6 @@ import azure.cognitiveservices.speech as speechsdk
 import urllib.request, urllib.parse, urllib.error, cv2
 
 app = Flask(__name__)
-app.config["TEMPLATES_AUTO_RELOAD"] = True
-
 
 
 @app.route('/', methods=['GET'])
@@ -25,7 +23,7 @@ def index():
 def speech():
     if request.method == "POST":
         f = request.files['audio_data']
-        with open('audio.wav', 'wb') as audio:
+        with open('audio_speech.wav', 'wb') as audio:
             f.save(audio)
             return render_template('speech-transcription.html', request="POST")
     else:
@@ -52,10 +50,10 @@ def video_transcript():
 
     video = VideoFileClip("video.mp4")
     audio = video.audio
-    audio.write_audiofile("audio.wav")
+    audio.write_audiofile("audio_video.wav")
     subscription_key = keys.subscription_key
     speech_region = keys.region
-    file_name = "audio.wav"
+    file_name = "audio_video.wav"
 
     def speech_recognize_continuous_from_file():
 
@@ -104,9 +102,6 @@ def video_transcript():
         transcript = list(' '.join(data))
 
         upper_list = [x.upper() for x in transcript]
-        list_im = []
-
-                    
 
         tag_ids = []
         for each_alphabet in upper_list:
