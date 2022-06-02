@@ -1,33 +1,43 @@
 # PeaceSign
-Developed using Microsoft Azure's cognitive services and Flask framework as an initiative to aid the hearing-impaired for [Code Without Barriers](https://codewithoutbarriers.devpost.com/)'s hackathon, PeaceSign facilitates the translation of speech into American sign language. The web application can transcribe speech and convert both short sentences & video into hand signs after receiving speech input from the user.
+Developed using Microsoft Azure's cognitive services and Flask framework as an initiative to aid the hearing-impaired for [Code Without Barriers](https://codewithoutbarriers.devpost.com/)'s hackathon, PeaceSign facilitates the translation of speech into sign language. After receiving user input, the application transcribes speech from short sentences and videos into hand signs.
 
-
-<img src="static\images\hand-with-peace-symbol.png" alt="Alt text" style="float:right;" title="Optional title">
+<p align="center">
+  <img width="250"  src="https://user-images.githubusercontent.com/58766039/171401680-1bda23d1-460f-43eb-9d80-3a0ef6bd3e87.png">
+</p>
 
 ## Technologies
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) ![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)![Azure](https://img.shields.io/badge/Microsoft_Azure-0089D6?style=for-the-badge&logo=microsoft-azure&logoColor=white)![Maintenance](http://unmaintained.tech/badge.svg)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) ![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white) ![Azure](https://img.shields.io/badge/Microsoft_Azure-0089D6?style=for-the-badge&logo=microsoft-azure&logoColor=white) &nbsp; ![Maintenance](http://unmaintained.tech/badge.svg)
 
-note: upon deployment to GitHub, all data in keys.py are removed to prevent misuse. In order for the solution to work, you will be required to replace the entries with your own endpoints which can be found in your Azure's cognitive service.
 
-## Process
-From all the available problem statement presented in Code Without Barriers, I set down with what I believed to be the most socially beneficial problem statement to fulfill my aspirations of creating solutions that enhances the quality of living for people that needs it. With heavy reference to [Devbook](https://themes.3rdwavemedia.com/bootstrap-templates/startup/devbook-free-bootstrap-5-book-ebook-landing-page-template-for-developers/) template, I managed to reduce the required time for website design which allowed me to allocate more time for solution research & development.
-
-To derive hand signs as an output, the model first transcribes speech into text, and with the help of this [article](https://medium.com/nerd-for-tech/transcribe-audio-from-video-with-azure-cognitive-services-a4589a12d74f), I was able to reach greater heights with the project and enhance the capabilities of the model to receive longer speech inputs from 30min videos after some minor adjustments to the source code. For each alphabet in the transcription, the model fires an HTTP request to get the images from the classifier trained in customvision.ai before dumping the results as a downloadable image.
-
-**Challenges**
-Due to time limitations imposed by the hackathon, along with my lack of expertise in software development, the planned features including real-time speech-to-sign translation and sign-to-speech was reduced to only short speech and video translation as I was running low on Azure credits with a starting amount of only a hundred on a student account. It was nonetheless, a very exciting and fruitful topic to conduct research on which can have produced good results if I had better time management.
-
-Certain functions within this project take forever to load as an HTTP request is fired for each letter in the transcription, but I have managed to reduce the time taken from an hour to less than a minute. However, I still believe there are easier ways to speed up the application loading speed e.g. with class maybe. There are plans to migrate this project onto an android platform for portability in the future, though still in consideration as I am still in the process of learning and understanding Java language.
-
-The incompatibility of python modules within PeaceSign also posed a huge problem in the deployment of the solution to the cloud as Azure Web only offers Linux containers for python and after several unsuccessful attempts of deployment, I managed to pin down the issue by running through the dependencies and singling out the modules that were causing container failures before replacing them with alternatives that perform the same functions.
+⚠️ a/n: Solution will not work unless you replace all entries in keys.py with your own keypoints found on Azure Portal!
 
 ## Demo
 ![Audio Demo](https://user-images.githubusercontent.com/58766039/168831788-59d49e22-e661-4a48-8337-ae2b99a72cc9.gif)
 ![Video Demo](https://user-images.githubusercontent.com/58766039/167899593-868e5258-6b80-4be3-9945-bdf8b5d9092d.gif)
 
 
+## Process
+From all the available problem statements presented to participants within the hackathon, I went with whatever was the most socially beneficial issue to tackle just to fulfill my aspirations of creating solutions that enhance the quality of living for those who may require more assistance. With heavy reference to [Devbook](https://themes.3rdwavemedia.com/bootstrap-templates/startup/devbook-free-bootstrap-5-book-ebook-landing-page-template-for-developers/) template, I was able to effectively allocate more time to solution research and development instead of fiddling with the frontend.
+
+The application's flow starts from the moment it receives a user input, where it transcribe speech into text. With the help of this [article](https://medium.com/nerd-for-tech/transcribe-audio-from-video-with-azure-cognitive-services-a4589a12d74f), I enhanced the capabilities of this project by forcing the model to receive continuous speech inputs for translation of hours long videos. For each alphabet in the transcription, the model fires an HTTP request from the API to retrieve images from the classifier trained with customvision.ai before dumping the results as a downloadable image.
+
+⚠️ a/n: functions relating to customvision.ai were removed in major update (#1), please check previous versions for API request references
+
+## Challenges
+* **Time limitations:**
+Participating in a hackathon enforces your disclipline to manage time effectively while being exposed to real-world problems. However, for someone who struggles with time management coupled with the lack of expertise in software development, having a time limit imposed upon was simply a fly in the ointment.
+* **Resource:**
+Having yet to reach the minimium required age to apply for credit card, I was unable to attain $200 Azure free trial credits for building this project. Fortunately, I was given $100 credits for a student account, but that also put me in a disadvantage as it would meant that the planned features had to reduce so I could save some credits for later use.
+* **Bottlenecks:**
+(this section has been fully updated, hopefully the application runs faster)
+Functions in this project took at least 30mins to execute because an HTTP request was fired for every letter in the transcription. However, I believe there are easier ways to speed up the application e.g. threaded codes, classes
+* **Incompatibility:**
+Various python modules posed a huge problem in the project deployment to cloud as Azure web service only offers Linux containers for python e.g. pywin32, opencv
+
+There are plans to migrate this project onto android platform for portability in the future, though still in consideration as I am in the process of learning Java. It was a very exciting and fruitful topic to conduct research on.
+
 ## How to use
-To clone and run this application, you will need Git
+To clone and run this application, you will need Git:
 ```
 $ git clone https://github.com/melonxmilk/PeaceSign
 
@@ -44,6 +54,5 @@ $ pip install -r requirements.txt
 # run the application
 $ flask run
 ```
-Similarly, you can access the cloud version [here](https://peacesign.azurewebsites.net/) on F0 tier (60 CPU minutes / day)
 
-Congrats, your application is now up and running~ Now that you have read until this point, do consider supporting my work in the hackathon simply by voting on the project! Thank you :) A huge thanks to [Kerismaker Studio](https://iconscout.com/contributors/kerismaker) for their stunning icons used for PeaceSign!
+A huge thanks to [Kerismaker Studio](https://iconscout.com/contributors/kerismaker) for their stunning icons and to everyone that has supported the growth of this project! 

@@ -4,21 +4,9 @@
 <section id="author-section" class="author-section section theme-bg-primary py-5">
    <div class="container py-3">
       <div class="author-profile text-center mb-5">
-      </div>
-      <h2 class="section-heading text-center text-white mb-3"></h2>
-      <div class="author-bio single-col-max mx-auto">
-         <div class="author-links text-center pt-4">
-            <div class="container">
-               <div class="form-group">
-                  <form action = "{{ url_for('upload_file') }}" method = "POST" 
-                     enctype = "multipart/form-data">
-                     <input type ="file" name ="file" accept=" video/*" />
-                     <input type ="submit" id="upload_video" value="upload"/>
-                  </form>
-                  <br>
-                  <textarea name="text" cols="20" rows="10" class="form-control" readonly></textarea>
-                  <img id="peace_hand" src="{{ url_for('static', filename='images/hand-with-peace-symbol.png') }}" alt="" >
-               </div>
+         <h2 class="section-heading text-center text-white mb-3"></h2>
+         <div class="author-bio single-col-max mx-auto">
+            <div class="author-links text-center pt-4">
             </div>
          </div>
       </div>
