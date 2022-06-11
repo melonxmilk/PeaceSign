@@ -1,7 +1,11 @@
 # flask
 import os, pickle, pymsgbox, keys, time
-from flask import Flask, redirect, render_template, request, url_for
+from flask import Flask, redirect, render_template, request, url_for, session
 from werkzeug.utils import secure_filename
+
+# model
+from flask_sqlalchemy import SQLAlchemy
+from forms import SignUpForm, LoginForm
 
 # speech
 from speech import recognize_with_bad_header, retrieve_image
@@ -12,14 +16,61 @@ import azure.cognitiveservices.speech as speechsdk
 import urllib.request, urllib.parse, urllib.error, cv2
 
 app = Flask(__name__)
-app.config["TEMPLATES_AUTO_RELOAD"] = True
+app.config['SECRET_KEY'] = 'ehe'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///Peace.db'
 
+db = SQLAlchemy(app)
+
+"""Model for Users."""
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    full_name = db.Column(db.String)
+    email = db.Column(db.String, unique=True)
+    password = db.Column(db.String)
+
+db.create_all()
 
 @app.route("/", methods=["GET"])
 def index():
     return render_template("index.html")
 
 
+@app.route("/signup", methods=["POST", "GET"])
+def signup():
+    form = SignUpForm()
+    if form.validate_on_submit():
+        new_user = User(full_name = form.full_name.data, email = form.email.data, password = form.password.data)
+        db.session.add(new_user)
+        try:
+            db.session.commit()
+        except Exception as e:
+            print(e)
+            db.session.rollback()
+            return render_template("signup.html", form = form, message = "This Email already exists in the system! Please Login instead.")
+        finally:
+            db.session.close()
+        return render_template("signup.html", message = "Successfully signed up")
+    return render_template("signup.html", form = form)
+
+
+@app.route("/login", methods=["POST", "GET"])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(email = form.email.data, password = form.password.data).first()
+        if user is None:
+            return render_template("login.html", form = form, message = "Wrong Credentials. Please Try Again.")
+        else:
+            session['user'] = user.id
+            return render_template("login.html", message = "Successfully Logged In!")
+    return render_template("login.html", form = form)
+
+@app.route("/logout")
+def logout():
+    if 'user' in session:
+        session.pop('user')
+    return redirect(url_for('index'))
+    
 @app.route("/speech", methods=["GET", "POST"])
 def speech():
     if request.method == "POST":

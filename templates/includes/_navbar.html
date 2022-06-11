@@ -61,7 +61,13 @@
      <div class="site-logo" style="margin: 20px;">
   <a class="navbar-brand" href="/"><img style="width:80px;height:80px;" class="logo-icon me-2" src="{{ url_for('static', filename='images/peace.png') }}" alt="logo" ><span class="logo-text">#Peace Sign</span></a></div>
   </a>						        
+  {% if 'user' in session %}
   <a href="{{ url_for('speech') }}">Audio</a>
   <a href="{{ url_for('video') }}"><i class="fas fa-bolt"></i>Video</a>
+  <li style="display:inline"><a href="{{url_for('logout')}}">Log Out</a></li>
+  {% else %}
+  <li style="display:inline"><a href="{{url_for('signup')}}">Sign Up</a></li>
+  <li style="display:inline"><a href="{{url_for('login')}}">Login</a></li>
+  {% endif%}
 <!--  <a href="{{ url_for('realtime') }}"><i class="fas fa-bolt"></i>Real-time</a> -->
 </nav>
