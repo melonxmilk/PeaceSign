@@ -39,7 +39,7 @@ There are plans to migrate this project onto android platform for portability in
 ## How to use
 To clone and run this application, you will need Git:
 ```
-$ git clone https://github.com/melonxmilk/PeaceSign
+$ git clone https://github.com/mlemxy/PeaceSign
 
 # create virtual env
 py -m venv .venv
